@@ -36,8 +36,8 @@ namespace labnet2021.tp2
 
                     int cantidadPasajerosInput = ValidacionReadline(30);
 
-                            Omnibus o = new Omnibus();
-                            o.Pasajeros = cantidadPasajerosInput;
+                            Omnibus o = new Omnibus(cantidadPasajerosInput);
+                         
                             arregloTransporte[i] = o;
                }
                            
@@ -55,9 +55,9 @@ namespace labnet2021.tp2
 
                     int cantidadPasajerosInput = ValidacionReadline(4);
 
-                    Omnibus o = new Omnibus();
-                    o.Pasajeros = cantidadPasajerosInput;
-                    arregloTransporte[i] = o;
+                    Taxi t = new Taxi(cantidadPasajerosInput);
+                 
+                    arregloTransporte[i] = t;
                 }
 
             }

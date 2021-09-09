@@ -2,6 +2,9 @@
 {
     class Taxi : TransportePublico
     {
-       
+        public Taxi(int pasajeros) : base(pasajeros)
+        {
+
+        }
     }
 }

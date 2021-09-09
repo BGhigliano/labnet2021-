@@ -6,6 +6,11 @@
        
         public int Pasajeros { get; set; }
 
+        public TransportePublico(int pasajeros)
+        {
+            this.Pasajeros = pasajeros;
+        }
+
         public void Avanzar()
         {
            

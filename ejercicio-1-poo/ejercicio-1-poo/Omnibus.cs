@@ -2,6 +2,10 @@
 {
     class Omnibus : TransportePublico
     {
-    
+        public Omnibus(int pasajeros) : base(pasajeros)
+        {
+
+        }
+
     }
 }
