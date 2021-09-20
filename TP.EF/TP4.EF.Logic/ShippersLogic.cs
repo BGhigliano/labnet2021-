@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TP4.EF.Data;
-using TP4.EF.Logic;
+using TP4.EF.Entities;
 
 namespace TP4.EF.Logic
 {
@@ -14,26 +11,53 @@ namespace TP4.EF.Logic
         public List<Shippers> GetAll()
 
         {
-            return context.Shippers.ToList();
+            try
+            {
+                return context.Shippers.ToList();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            
         }
 
         public void Add(Shippers newShipper)
         {
-            context.Shippers.Add(newShipper);
-            context.SaveChanges(); 
+            try
+            {
+                context.Shippers.Add(newShipper);
+                context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+       
         }
 
         public void Delete(int id)
         {
-            Shippers shipperAEliminar = context.Shippers.Find(id);
             try
             {
+                Shippers shipperAEliminar = context.Shippers.Find(id);
+
                 context.Shippers.Remove(shipperAEliminar);
 
+                if (context.Orders.ToList().Count>0)
+                {
+                    foreach (Orders o in context.Orders.ToList())
+                    {
+                        if(o.ShipVia==id)
+                        o.ShipVia = null;
+                    }
+
+                }
+              
             }
-            catch (Exception e)
+            catch(Exception e)
             {
-                throw  new Exception("Id incorrecto");
+                throw e;
             }
 
             context.SaveChanges();
@@ -41,17 +65,25 @@ namespace TP4.EF.Logic
 
         public void Update(Shippers shipper)
         {
-            Shippers shipperUpdate = context.Shippers.Find(shipper.ShipperID);
-           shipperUpdate.CompanyName = shipper.CompanyName;
-            shipper.Phone = shipper.Phone;
-            context.SaveChanges();
+
+            try
+            {
+                Shippers shipperUpdate = context.Shippers.Find(shipper.ShipperID);
+                shipperUpdate.CompanyName = shipper.CompanyName;
+                shipper.Phone = shipper.Phone;
+                context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
         }
 
         public Shippers Busqueda(int id)
         {
             Shippers shipper = context.Shippers.Find(id);
             if (shipper == null)
-
             {
                 throw new Exception("Id no encontrado");
             }

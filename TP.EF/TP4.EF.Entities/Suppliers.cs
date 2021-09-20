@@ -1,10 +1,7 @@
 namespace TP4.EF.Logic
 {
-    using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     public partial class Suppliers
     {
@@ -44,5 +41,19 @@ namespace TP4.EF.Logic
 
         [Column(TypeName = "ntext")]
         public string HomePage { get; set; }
+        public override bool Equals(object o)
+        {
+            var result = false;
+            var project = o as Suppliers;
+            if (project != null)
+            {
+                result = SupplierID == project.SupplierID;
+                result &= CompanyName.Equals(project.CompanyName);
+                result &= ContactName.Equals(project.ContactName);
+                result &= ContactTitle.Equals(project.ContactTitle);
+                return result;
+            }
+            return false;
+        }
     }
 }

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
-using TP4.EF.Logic;
 using TP.EF.UI.Extensions;
-
-
+using TP4.EF.Data;
+using TP4.EF.Entities;
+using TP4.EF.Logic;
 
 namespace TP.EF.UI
 {
@@ -13,14 +13,20 @@ namespace TP.EF.UI
     {
         static void Main(string[] args)
         {
-           
+            NorthwindContext context = new NorthwindContext();
+            List<Products> products = context.Products.ToList();
+            foreach (Products p in products)
+            {
+                Console.WriteLine("ID: "+p.ProductID+" supplier: "+p.SupplierID);
+            }
+
+            Console.ReadLine();
+
             do
             {
                 MainMenu();
-
             }
             while (true);
-
         }
 
         public static void MainMenu()
@@ -88,7 +94,6 @@ namespace TP.EF.UI
 
                 Console.WriteLine("Presione una tecla para retornar al menú principal");
                 Console.ReadKey();
-           
         }
         public static void ListarSuppliers()
         {
@@ -102,7 +107,6 @@ namespace TP.EF.UI
                 {
                     Console.WriteLine($"Id: {s.SupplierID}, empresa: {s.CompanyName}, contacto: {s.ContactName}, título del contacto: {s.ContactTitle}");
                 }
-
                 Console.WriteLine("Presione una tecla para retornar al menú principal");
                 Console.ReadKey();
         }
@@ -191,10 +195,13 @@ namespace TP.EF.UI
             {
                 ShippersLogic shippersLogic = new ShippersLogic();
                
-                Console.WriteLine("Indique el Id del shipper a eliminar:");
+                Console.WriteLine("Indique el Id del shipper a eliminar o ingrese la tecla n para volver al menú:");
                 try
                 {
-                    int id =Int32.Parse(Console.ReadLine());
+                    string readline = Console.ReadLine();
+                    if (readline == "n")
+                        break;
+                    int id = Int32.Parse(readline);
                     shippersLogic.Delete(id);
                 }
 
@@ -218,10 +225,13 @@ namespace TP.EF.UI
                 SuppliersLogic suppliersLogic = new SuppliersLogic();
                 
 
-                Console.WriteLine("Indique el Id del supplier a eliminar:");
+                Console.WriteLine("Indique el Id del supplier a eliminar o ingrese la tecla n para volver al menú:");
                 try
                 {
-                    int id = Int32.Parse(Console.ReadLine());
+                    string readline = Console.ReadLine();
+                    if (readline == "n")
+                        break;
+                    int id = Int32.Parse(readline);
                     suppliersLogic.Delete(id);
                 }
 
@@ -247,9 +257,12 @@ namespace TP.EF.UI
 
                 try
                 {
-                    Console.WriteLine("Indique el Id del shipper a modificar:");
+                    Console.WriteLine("Indique el Id del shipper a modificar o ingrese la tecla n para volver al menú:");
 
-                    int id = Int32.Parse(Console.ReadLine());
+                    string readline = Console.ReadLine();
+                    if (readline == "n")
+                        break;
+                    int id = Int32.Parse(readline);
                     Shippers shipper = shippersLogic.Busqueda(id);
                     
                     Console.WriteLine("Indique el nuevo nombre del shipper o ingrese la letra n para evitar cargar un nuevo nombre:");
@@ -298,9 +311,12 @@ namespace TP.EF.UI
             {
                 try
                 {
-                    Console.WriteLine("Indique el Id del supplier a modificar:");
+                    Console.WriteLine("Indique el Id del supplier a modificar o ingrese la tecla n para volver al menú::");
 
-                    int id = Int32.Parse(Console.ReadLine());
+                    string readline = Console.ReadLine();
+                    if (readline == "n")
+                        break;
+                    int id = Int32.Parse(readline);
                     Suppliers supplier = suppliersLogic.Busqueda(id);
 
                     Console.WriteLine("Indique el nuevo nombre del supplier o ingrese la letra n para evitar cargar un nuevo nombre:");

@@ -5,8 +5,6 @@ namespace TP.EF.UI.Extensions
 {
     public static class DbEntityValidationExceptionExtension
     {
-      
-
         public static void ResumenErroresValidacion(this DbEntityValidationException e)
         {
             Console.WriteLine($"Se detectaron la/s siguiente/s excepcion/es:");

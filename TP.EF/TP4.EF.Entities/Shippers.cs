@@ -1,10 +1,6 @@
 namespace TP4.EF.Logic
 {
-    using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     public partial class Shippers
     {
@@ -17,5 +13,19 @@ namespace TP4.EF.Logic
 
         [StringLength(24,ErrorMessage = "El teléfono no debe superar los 40 caracteres")]
         public string Phone { get; set; }
+
+        public override bool Equals(object o)
+        {
+            var result = false;
+            var project = o as Shippers;
+            if (project != null)
+            {
+                result = ShipperID == project.ShipperID;
+                result &= CompanyName.Equals(project.CompanyName);
+                result &= Phone.Equals(project.Phone);
+                return result;
+            }
+            return false;
+        }
     }
 }

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TP4.EF.Data;
+using TP4.EF.Entities;
 
 namespace TP4.EF.Logic
 {
@@ -11,36 +9,80 @@ namespace TP4.EF.Logic
     {      
         public List<Suppliers> GetAll()
         {
-            return context.Suppliers.ToList();
+            try
+            {
+                return context.Suppliers.ToList();
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+            
         }
 
         public void Add(Suppliers newSuppliers)
         {
-            context.Suppliers.Add(newSuppliers);
-            context.SaveChanges();
+            try
+            {
+                context.Suppliers.Add(newSuppliers);
+                context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
         }
 
         public void Delete(int id)
         {
-            Suppliers supplierAEliminar = context.Suppliers.Find(id);
-            context.Suppliers.Remove(supplierAEliminar);
+            try
+            {
+                Suppliers supplierAEliminar = context.Suppliers.Find(id);
+                context.Suppliers.Remove(supplierAEliminar);
+
+                if (context.Products.ToList().Count>0)
+                {
+                    foreach (Products p in context.Products.ToList())
+                    {
+                        if(p.SupplierID==id)
+                        p.SupplierID = null;
+                    }
+
+                }
+              
+            }
+            catch(Exception e)
+            {
+                throw  e;
+            }
+
             context.SaveChanges();
+
         }
 
         public void Update(Suppliers supplier)
         {
-            Suppliers suppliersUpdate = context.Suppliers.Find(supplier.SupplierID);
+            try
+            {
+                Suppliers suppliersUpdate = context.Suppliers.Find(supplier.SupplierID);
 
-            suppliersUpdate.CompanyName = supplier.CompanyName;
-            suppliersUpdate.Phone = supplier.Phone;
-            context.SaveChanges();
+                suppliersUpdate.CompanyName = supplier.CompanyName;
+                suppliersUpdate.Phone = supplier.Phone;
+                context.SaveChanges();
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            
         }
 
         public Suppliers Busqueda(int id)
         {
             Suppliers supplier = context.Suppliers.Find(id);
             if(supplier==null)
-
             {
                 throw new Exception("Id no encontrado");
             }

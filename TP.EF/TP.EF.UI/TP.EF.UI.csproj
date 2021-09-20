@@ -60,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TP4.EF.Data\TP4.EF.Data.csproj">
+      <Project>{C28E3C5B-28AB-4F0E-BB0A-6FB48608C8F0}</Project>
+      <Name>TP4.EF.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TP4.EF.Entities\TP4.EF.Entities.csproj">
       <Project>{88842082-ad87-400f-9681-82a864bbaa3c}</Project>
       <Name>TP4.EF.Entities</Name>

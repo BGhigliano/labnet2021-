@@ -50,6 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\202109192321518_Products.cs" />
+    <Compile Include="Migrations\202109192321518_Products.Designer.cs">
+      <DependentUpon>202109192321518_Products.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NorthwindContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -62,6 +67,11 @@
       <Project>{88842082-AD87-400F-9681-82A864BBAA3C}</Project>
       <Name>TP4.EF.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202109192321518_Products.resx">
+      <DependentUpon>202109192321518_Products.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
