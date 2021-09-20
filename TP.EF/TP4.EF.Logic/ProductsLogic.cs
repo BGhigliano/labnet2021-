@@ -8,7 +8,6 @@ namespace TP4.EF.Logic
     class ProductsLogic : BaseLogic
 
     {
-    
         public List<Products> Busqueda(int idSupplier)
         {
             List<Products> products = context.Products.ToList();

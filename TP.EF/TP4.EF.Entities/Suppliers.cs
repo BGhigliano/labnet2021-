@@ -5,6 +5,8 @@ namespace TP4.EF.Logic
 
     public partial class Suppliers
     {
+        // Se utlizarán 3 propiedades (CompanyName, ContactName y ContactTitle de la entidad suppliers para simplificar el ejemplo
+
         [Key]
         public int SupplierID { get; set; }
 

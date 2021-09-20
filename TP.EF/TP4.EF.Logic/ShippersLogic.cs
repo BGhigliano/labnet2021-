@@ -7,7 +7,6 @@ namespace TP4.EF.Logic
 {
     public class ShippersLogic : BaseLogic, IABMLogic<Shippers>
     {
-    
         public List<Shippers> GetAll()
 
         {
@@ -19,7 +18,6 @@ namespace TP4.EF.Logic
             {
                 throw e;
             }
-            
         }
 
         public void Add(Shippers newShipper)
@@ -33,7 +31,6 @@ namespace TP4.EF.Logic
             {
                 throw e;
             }
-       
         }
 
         public void Delete(int id)
@@ -51,21 +48,23 @@ namespace TP4.EF.Logic
                         if(o.ShipVia==id)
                         o.ShipVia = null;
                     }
-
                 }
-              
             }
-            catch(Exception e)
+            
+            catch (ArgumentNullException )
+            {
+                throw new Exception ("No existe el shipper indicado");
+            }
+         
+            catch (Exception e)
             {
                 throw e;
             }
-
             context.SaveChanges();
         }
 
         public void Update(Shippers shipper)
         {
-
             try
             {
                 Shippers shipperUpdate = context.Shippers.Find(shipper.ShipperID);
@@ -77,7 +76,6 @@ namespace TP4.EF.Logic
             {
                 throw e;
             }
-
         }
 
         public Shippers Busqueda(int id)

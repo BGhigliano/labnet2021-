@@ -48,11 +48,14 @@ namespace TP4.EF.Logic
                         if(p.SupplierID==id)
                         p.SupplierID = null;
                     }
-
                 }
-              
             }
-            catch(Exception e)
+         
+            catch (ArgumentNullException)
+            {
+                throw new Exception("No existe el supplier indicado");
+            }
+            catch (Exception e)
             {
                 throw  e;
             }

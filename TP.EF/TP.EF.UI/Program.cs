@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
 using TP.EF.UI.Extensions;
-using TP4.EF.Data;
-using TP4.EF.Entities;
 using TP4.EF.Logic;
 
 namespace TP.EF.UI
@@ -13,22 +11,12 @@ namespace TP.EF.UI
     {
         static void Main(string[] args)
         {
-            NorthwindContext context = new NorthwindContext();
-            List<Products> products = context.Products.ToList();
-            foreach (Products p in products)
-            {
-                Console.WriteLine("ID: "+p.ProductID+" supplier: "+p.SupplierID);
-            }
-
-            Console.ReadLine();
-
             do
             {
                 MainMenu();
             }
             while (true);
         }
-
         public static void MainMenu()
         {
             Console.Clear();
@@ -114,11 +102,13 @@ namespace TP.EF.UI
         {
             do
             {
-                ShippersLogic shippersLogic = new ShippersLogic();
-                Shippers nuevoShipper = new Shippers();
+               
              
                 try
                 {
+                    ShippersLogic shippersLogic = new ShippersLogic();
+                    Shippers nuevoShipper = new Shippers();
+
                     Console.WriteLine("Escriba el nombre de la empresa:");
                     string nombreEmpresa = Console.ReadLine();
                     nuevoShipper.CompanyName = nombreEmpresa;
@@ -135,7 +125,12 @@ namespace TP.EF.UI
                     e.ResumenErroresValidacion();
                     continue;
                 }
-                
+                catch (Exception e)
+                {
+                    e.ResumenErroresValidacion();
+                    continue;
+                }
+
                 Console.WriteLine("Shipper añadido, presione una tecla para continuar");
 
                 Console.ReadKey();
@@ -146,20 +141,16 @@ namespace TP.EF.UI
         }
         public static void AniadirSupplier()
         {
-
-
             /// Se completan sólo 3 parámetros para simplificar el ejemplo
             /// 
-
-
             do
             {
-                SuppliersLogic suppliersLogic= new SuppliersLogic();
-                Suppliers nuevoSupplier = new Suppliers();
-
-
+                
                 try
                 {
+                    SuppliersLogic suppliersLogic = new SuppliersLogic();
+                    Suppliers nuevoSupplier = new Suppliers();
+
                     Console.WriteLine("Escriba el nombre de la empresa:");
                     string nombreEmpresa = Console.ReadLine();
                     nuevoSupplier.CompanyName = nombreEmpresa;
@@ -180,6 +171,13 @@ namespace TP.EF.UI
                     e.ResumenErroresValidacion();
                     continue;
                 }
+                catch(Exception e)
+                {
+                    e.ResumenErroresValidacion();
+                    continue;
+
+                }
+
 
                 Console.WriteLine("Supplier añadido, presione una tecla para continuar");
 
@@ -193,19 +191,23 @@ namespace TP.EF.UI
         {
             do
             {
-                ShippersLogic shippersLogic = new ShippersLogic();
-               
-                Console.WriteLine("Indique el Id del shipper a eliminar o ingrese la tecla n para volver al menú:");
                 try
                 {
+                    ShippersLogic shippersLogic = new ShippersLogic();
+
+                    Console.WriteLine("Indique el Id del shipper a eliminar o ingrese la tecla n para volver al menú:");
                     string readline = Console.ReadLine();
                     if (readline == "n")
                         break;
                     int id = Int32.Parse(readline);
                     shippersLogic.Delete(id);
                 }
-
-                catch(Exception e)
+                catch (OverflowException)
+                {
+                    Exception e = new Exception("El número indicado es muy grande o muy pequeño");
+                    e.ResumenErroresValidacion();
+                }
+                catch (Exception e)
                 {
                   e.ResumenErroresValidacion();
                     continue;
@@ -222,19 +224,21 @@ namespace TP.EF.UI
         {
             do
             {
-                SuppliersLogic suppliersLogic = new SuppliersLogic();
-                
-
-                Console.WriteLine("Indique el Id del supplier a eliminar o ingrese la tecla n para volver al menú:");
                 try
                 {
+                    SuppliersLogic suppliersLogic = new SuppliersLogic();
+                    Console.WriteLine("Indique el Id del supplier a eliminar o ingrese la tecla n para volver al menú:");
                     string readline = Console.ReadLine();
                     if (readline == "n")
                         break;
                     int id = Int32.Parse(readline);
                     suppliersLogic.Delete(id);
                 }
-
+                catch (OverflowException)
+                {
+                    Exception e = new Exception("El número indicado es muy grande o muy pequeño");
+                    e.ResumenErroresValidacion();
+                }
                 catch (Exception e)
                 {
                     e.ResumenErroresValidacion();
@@ -242,7 +246,6 @@ namespace TP.EF.UI
                 }
 
                 Console.WriteLine("Supplier eliminado, presione una tecla para continuar");
-
                 Console.ReadKey();
                 break;
             }
@@ -252,11 +255,9 @@ namespace TP.EF.UI
         {
             do
             {
-                ShippersLogic shippersLogic = new ShippersLogic();
-
-
                 try
                 {
+                    ShippersLogic shippersLogic = new ShippersLogic();
                     Console.WriteLine("Indique el Id del shipper a modificar o ingrese la tecla n para volver al menú:");
 
                     string readline = Console.ReadLine();
@@ -295,7 +296,6 @@ namespace TP.EF.UI
                 }
 
                 Console.WriteLine("Shipper modificado, presione una tecla para continuar");
-
                 Console.ReadKey();
                 break;
 
@@ -368,8 +368,5 @@ namespace TP.EF.UI
             while (true) ;
         }
           
-         
-    
-
     }
 }

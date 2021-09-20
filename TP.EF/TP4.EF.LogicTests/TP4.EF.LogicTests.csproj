@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShippersLogicTests.cs" />
+    <Compile Include="SuppliersLogicTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
