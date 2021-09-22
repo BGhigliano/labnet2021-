@@ -9,7 +9,7 @@ namespace TP4.EF.Logic
     {
            public List<Orders> Busqueda(int idShipper)
         {
-           List<Orders> orders = context.Orders.ToList();
+            List<Orders> orders = context.Orders.ToList();
             List<Orders> ordenesConCoincidencia = new List<Orders>();
             try
             {

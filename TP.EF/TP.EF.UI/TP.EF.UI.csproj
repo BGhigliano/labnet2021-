@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleHelper.cs" />
     <Compile Include="Extensions\DbEntityValidationExceptionExtension.cs" />
     <Compile Include="Extensions\ExceptionExtension.cs" />
     <Compile Include="Program.cs" />
