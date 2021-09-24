@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TP5.LINQ.Data;
+using TP5.LINQ.Entities;
+using TP5.LINQ.Logic;
 
 namespace TP5.LINQ
 {
@@ -10,6 +9,7 @@ namespace TP5.LINQ
     {
         static void Main(string[] args)
         {
+            Console.ReadKey();
         }
     }
 }

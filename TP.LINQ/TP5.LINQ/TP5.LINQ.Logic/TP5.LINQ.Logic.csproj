@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CB5EF099-8EA1-47B3-BECC-FB76DF94612E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>TP5.LINQ</RootNamespace>
-    <AssemblyName>TP5.LINQ</AssemblyName>
+    <ProjectGuid>{199580B2-4EB4-4288-9AB3-844766F00665}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TP5.LINQ.Logic</RootNamespace>
+    <AssemblyName>TP5.LINQ.Logic</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -50,7 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="BaseLogic.cs" />
+    <Compile Include="CustomerLogic.cs" />
+    <Compile Include="ProductsLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -65,10 +65,6 @@
     <ProjectReference Include="..\TP5.LINQ.Entities\TP5.LINQ.Entities.csproj">
       <Project>{505c3d54-2276-41f9-8d7a-a6696b6f2af7}</Project>
       <Name>TP5.LINQ.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TP5.LINQ.Logic\TP5.LINQ.Logic.csproj">
-      <Project>{199580b2-4eb4-4288-9ab3-844766f00665}</Project>
-      <Name>TP5.LINQ.Logic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
