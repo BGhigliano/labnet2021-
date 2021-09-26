@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+    <h1>CONTACTO</h1>
+
+    <div>Completa tus datos.</div>
+    <br>
+
+    <div id="formTotal">
+
+        <div class="formBorder">
+            <div id=subtitle1 class="subtitle">Información personal:</div>
+            <br>
+            <form>
+
+                <label for="nombre">Nombre:</label><br>
+                <input type="text" id="nombre" name="nombre" value=""><br>
+                <label for="apellido">Apellido:</label><br>
+                <input type="text" id="apellido" name="apellido" value=""><br>
+                <label for="edad">Edad:</label><br>
+                <input type="number" id="edad" name="edad" value=""><br><br>
+
+                <input type="radio" id="masculino" name="sexo" value="Masculino">
+                <label for="masculino">Masculino</label><br>
+                <input type="radio" id="femenino" name="sexo" value="Femenino">
+                <label for="femenino">Femenino</label><br>
+                <input type="radio" id="otro" name="sexo" value="Otro">
+                <label for="otro">Otro</label>
+        </div>
+        <br>
+        <div class="formBorder" id="formBorder2">
+            <div id=subtitle2 class="subtitle">Información adicional:</div>
+            <br>
+            <label for="fname">Empresa:</label><br>
+            <input type="text" id="nomEmpresa" name="nomEmpresa" value=""><br>
+        </div>
+        <input type="submit" class="submit" value="Submit" onclick="return validateform()">
+        </form>
+        <br>
+        <br>
+        <button type="button" onclick="vaciarcampos()">Vaciar campos</button>
+
+    </div>
+    <script src="javascript.js "></script>
+</body>
+
+</html>

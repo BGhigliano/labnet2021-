@@ -1,0 +1,40 @@
+#formTotal {
+    padding-top: 8px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 0px;
+    width: 300px;
+    height: fit-content;
+    position: fixed;
+    font-style: oblique;
+    background-color: #808080;
+    color: white;
+    border: 1px solid #ccc;
+}
+
+.subtitle {
+    display: inline-block;
+    margin: 0;
+    transform: translateY(-50%);
+    background-color: #808080;
+}
+
+.formBorder {
+    padding-left: 10px;
+    padding-bottom: 10px;
+    border: 2px solid #ccc;
+    border-style: groove;
+}
+
+.submit {
+    background-color: #4682b4;
+    color: white;
+    border-top: solid white 1px;
+    border-left: solid white 1px;
+    border-right: solid #4682b4 0px;
+    border-bottom: solid #4682b4 0px;
+}
+
+#edad {
+    width: 70px;
+}
