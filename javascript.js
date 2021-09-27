@@ -22,5 +22,8 @@ function vaciarcampos() {
         }
     }
     var radio = document.querySelector('input[type=radio][name=sexo]:checked');
-    radio.checked = false;
+    if(radio!=null){
+      radio.checked = false;   
+    }
+   
 }
