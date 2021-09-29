@@ -1,5 +1,6 @@
-namespace TP4.EF.Logic
+namespace TP4.EF.Entities
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     public partial class Shippers
@@ -26,6 +27,15 @@ namespace TP4.EF.Logic
                 return result;
             }
             return false;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 1444871841;
+            hashCode = hashCode * -1521134295 + ShipperID.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(CompanyName);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Phone);
+            return hashCode;
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TP.EF.UI.Extensions;
+using TP4.EF.Entities;
 using TP4.EF.Logic;
 
 namespace TP.EF.UI
@@ -139,7 +140,6 @@ namespace TP.EF.UI
             /// 
             do
             {
-
                 try
                 {
                     SuppliersLogic suppliersLogic = new SuppliersLogic();
@@ -171,9 +171,7 @@ namespace TP.EF.UI
                 {
                     e.ResumenErroresValidacion();
                     continue;
-
                 }
-
 
                 Console.WriteLine("Supplier añadido, presione una tecla para continuar");
 

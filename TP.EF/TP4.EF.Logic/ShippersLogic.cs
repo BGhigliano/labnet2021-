@@ -69,7 +69,7 @@ namespace TP4.EF.Logic
             {
                 Shippers shipperUpdate = context.Shippers.Find(shipper.ShipperID);
                 shipperUpdate.CompanyName = shipper.CompanyName;
-                shipper.Phone = shipper.Phone;
+                shipperUpdate.Phone = shipper.Phone;
                 context.SaveChanges();
             }
             catch (Exception e)

@@ -1,6 +1,6 @@
 using System.Data.Entity;
 using TP4.EF.Entities;
-using TP4.EF.Logic;
+
 
 namespace TP4.EF.Data
 {

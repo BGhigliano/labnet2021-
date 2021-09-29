@@ -1,0 +1,30 @@
+﻿@model List<TP4.EF.MVC.Models.ShippersView>
+
+@{
+    ViewBag.Title = "Region Page";
+}
+
+<h1>Shippers index</h1>
+
+<table class="table-responsive">
+    <tr>
+        <td> Id Shipper   </td>
+        <td> Nombre de la compañía   </td>
+        <td> Teléfono </td>
+        <td> Editar </td>
+        <td> Eliminar </td>
+    </tr>
+
+    @foreach (TP4.EF.MVC.Models.ShippersView shipperView in Model)
+    {
+        <tr>
+            <td>  @shipperView.ShipperID   </td>
+            <td>  @shipperView.CompanyName    </td>
+            <td> @shipperView.Phone </td>
+            <td> @Html.ActionLink("Editar shipper", "InsertUpdate", new TP4.EF.MVC.Models.ShippersView { ShipperID = shipperView.ShipperID, CompanyName = shipperView.CompanyName, Phone = shipperView.Phone, Modificar = "Mod" }, new { onclick = "return confirm('Está seguro de editar el shipper?')" }) </td>
+            <td> @Html.ActionLink("Eliminar shipper", "Delete", new { id = shipperView.ShipperID }, new { onclick = "return confirm('Está seguro de borrar el shipper?')" }) </td>
+        </tr>
+    }
+</table>
+
+<div>@Html.ActionLink("Insertar nuevo shipper", "InsertUpdate", "Shippers")</div>

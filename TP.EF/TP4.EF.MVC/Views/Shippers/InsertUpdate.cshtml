@@ -1,0 +1,22 @@
+﻿@model TP4.EF.MVC.Models.ShippersView
+
+@{
+    ViewBag.Title = "Region Page";
+}
+
+<h1>Vista para insertar</h1>
+
+
+
+<br />
+
+@using (Html.BeginForm("InsertUpdate", "Shippers", FormMethod.Post))
+{
+    @Html.HiddenFor(s => s.ShipperID)
+    @Html.HiddenFor(s => s.Modificar)
+    <label> Nombre de la compañía: </label> @Html.EditorFor(s => s.CompanyName)
+    <br />
+    <label> Teléfono: </label> @Html.EditorFor(s => s.Phone)
+    <input type="submit" name="" value="Guardar" class="btn-success" />
+
+}

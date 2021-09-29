@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TP4.EF.Data;
+using TP4.EF.Entities;
 
 
 namespace TP4.EF.Logic.Tests

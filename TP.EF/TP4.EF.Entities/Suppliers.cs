@@ -1,5 +1,6 @@
-namespace TP4.EF.Logic
+namespace TP4.EF.Entities
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -56,6 +57,24 @@ namespace TP4.EF.Logic
                 return result;
             }
             return false;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -2143704812;
+            hashCode = hashCode * -1521134295 + SupplierID.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(CompanyName);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ContactName);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ContactTitle);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Address);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(City);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Region);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(PostalCode);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Country);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Phone);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Fax);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(HomePage);
+            return hashCode;
         }
     }
 }
