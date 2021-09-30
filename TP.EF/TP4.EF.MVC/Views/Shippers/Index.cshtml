@@ -6,25 +6,27 @@
 
 <h1>Shippers index</h1>
 
-<table class="table-responsive">
-    <tr>
-        <td> Id Shipper   </td>
-        <td> Nombre de la compañía   </td>
-        <td> Teléfono </td>
-        <td> Editar </td>
-        <td> Eliminar </td>
-    </tr>
-
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col"> Id Shipper   </th>
+            <th scope="col"> Nombre de la compañía   </th>
+            <th scope="col"> Teléfono </th>
+            <th scope="col"> Editar </th>   
+            <th scope="col"> Eliminar </th>
+        </tr>
+    </thead>
     @foreach (TP4.EF.MVC.Models.ShippersView shipperView in Model)
     {
         <tr>
-            <td>  @shipperView.ShipperID   </td>
-            <td>  @shipperView.CompanyName    </td>
-            <td> @shipperView.Phone </td>
-            <td> @Html.ActionLink("Editar shipper", "InsertUpdate", new TP4.EF.MVC.Models.ShippersView { ShipperID = shipperView.ShipperID, CompanyName = shipperView.CompanyName, Phone = shipperView.Phone, Modificar = "Mod" }, new { onclick = "return confirm('Está seguro de editar el shipper?')" }) </td>
-            <td> @Html.ActionLink("Eliminar shipper", "Delete", new { id = shipperView.ShipperID }, new { onclick = "return confirm('Está seguro de borrar el shipper?')" }) </td>
+            <td scope="row">  @shipperView.ShipperID   </td>
+            <td scope="row">  @shipperView.CompanyName    </td>
+            <td scope="row"> @shipperView.Phone </td>
+            <td scope="row"> @Html.ActionLink("Editar shipper", "InsertUpdate", new TP4.EF.MVC.Models.ShippersView { ShipperID = shipperView.ShipperID, CompanyName = shipperView.CompanyName, Phone = shipperView.Phone, Modificar = "Mod" }, new { onclick = "return confirm('Está seguro de editar el shipper?')" }) </td>
+            <td scope="row"> @Html.ActionLink("Eliminar shipper", "Delete", new { id = shipperView.ShipperID }, new { onclick = "return confirm('Está seguro de borrar el shipper?')" }) </td>
         </tr>
     }
 </table>
 
 <div>@Html.ActionLink("Insertar nuevo shipper", "InsertUpdate", "Shippers")</div>
+

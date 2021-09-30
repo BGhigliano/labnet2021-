@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using TP4.EF.MVC.Models;
 
 namespace TP4.EF.MVC.Controllers
 {
     public class ErrorController : Controller
     {
         // GET: Error
-        public ActionResult Index()
+        public ActionResult Index(string error)
         {
-            return View();
+            ErrorView errorView = new ErrorView();
+            errorView.listadoDeErrores.Add(error);
+            return View(errorView);
         }
     }
 }

@@ -15,15 +15,26 @@ namespace TP4.EF.MVC.Controllers
         // GET: Shippers
         public ActionResult Index()
         {
-            List<Shippers> shippers = shippersLogic.GetAll();
-            List<ShippersView> shippersViews = shippers.Select(s => new ShippersView
+            List<ShippersView> shippersViews = new List<ShippersView>();
+            try
             {
-                ShipperID = s.ShipperID,
-                CompanyName = s.CompanyName,
-                Phone = s.Phone
-            }).ToList();
+                List<Shippers> shippers = shippersLogic.GetAll();
+                shippersViews = shippers.Select(s => new ShippersView
+                {
+                    ShipperID = s.ShipperID,
+                    CompanyName = s.CompanyName,
+                    Phone = s.Phone
+                }).ToList();
+                return View(shippersViews);
+            }
 
-            return View(shippersViews);
+
+            catch(Exception e) 
+            {
+                string error = e.Message.ToString();
+                return RedirectToAction("Index", "Error",new { error = error });
+            }
+            
         }
 
         /*[HttpPost]
@@ -43,9 +54,7 @@ namespace TP4.EF.MVC.Controllers
         [HttpGet]
         public ActionResult InsertUpdate(ShippersView shippersView)
         {
-           
              return View(shippersView);
-
         }
        
         [HttpPost]
@@ -55,16 +64,17 @@ namespace TP4.EF.MVC.Controllers
             {
                 try
                 {
+                    if (ModelState.IsValid)
+                    {
                     Shippers shipperEntity = new Shippers
                     {
                         ShipperID=shippersView.ShipperID,
                         CompanyName = shippersView.CompanyName,
                         Phone = shippersView.Phone
                     };
-
                     shippersLogic.Update(shipperEntity);
-
                     return RedirectToAction("Index");
+                    }
                 }
                 catch
                 {
@@ -75,15 +85,19 @@ namespace TP4.EF.MVC.Controllers
             {
                 try
                 {
-                    Shippers shipperEntity = new Shippers
+                    if (ModelState.IsValid)
                     {
-                        CompanyName = shippersView.CompanyName,
-                        Phone = shippersView.Phone
-                    };
+                        Shippers shipperEntity = new Shippers
+                        {
+                            CompanyName = shippersView.CompanyName,
+                            Phone = shippersView.Phone
+                        };
 
-                    shippersLogic.Add(shipperEntity);
+                        shippersLogic.Add(shipperEntity);
 
-                    return RedirectToAction("Index");
+                        return RedirectToAction("Index");
+
+                    }
                 }
                 catch
                 {
@@ -91,8 +105,8 @@ namespace TP4.EF.MVC.Controllers
                 }
 
             }
-            
 
+            return View(shippersView);
         }
 
         public ActionResult Delete(int id)

@@ -16,7 +16,7 @@ namespace TP4.EF.Logic
             }
             catch (Exception e)
             {
-                throw e;
+                throw new Exception($"Se ha encontrado la siguiente excepción del tipo {e.GetType()}: {e.Message}");
             }
         }
 
