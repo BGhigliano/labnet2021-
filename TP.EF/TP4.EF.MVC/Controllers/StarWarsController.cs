@@ -35,10 +35,7 @@ namespace TP4.EF.MVC.Controllers
                         JObject jswchar = sub_obj as JObject;
                         StarWarsCharacterView swchar = jswchar.ToObject<StarWarsCharacterView>();
                         swCharacter.Add(swchar);
-                       
                     }
-
-
                 }
                 return View(swCharacter);
             }

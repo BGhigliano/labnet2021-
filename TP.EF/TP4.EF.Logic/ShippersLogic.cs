@@ -8,7 +8,6 @@ namespace TP4.EF.Logic
     public class ShippersLogic : BaseLogic, IABMLogic<Shippers>
     {
         public List<Shippers> GetAll()
-
         {
             try
             {
@@ -49,6 +48,7 @@ namespace TP4.EF.Logic
                         o.ShipVia = null;
                     }
                 }
+                 context.SaveChanges();
             }
             
             catch (ArgumentNullException )
@@ -60,7 +60,7 @@ namespace TP4.EF.Logic
             {
                 throw e;
             }
-            context.SaveChanges();
+           
         }
 
         public void Update(Shippers shipper)
