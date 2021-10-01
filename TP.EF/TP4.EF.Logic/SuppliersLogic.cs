@@ -49,6 +49,7 @@ namespace TP4.EF.Logic
                         p.SupplierID = null;
                     }
                 }
+                context.SaveChanges();
             }
          
             catch (ArgumentNullException)
@@ -60,7 +61,7 @@ namespace TP4.EF.Logic
                 throw  e;
             }
 
-            context.SaveChanges();
+           
 
         }
 
@@ -73,7 +74,6 @@ namespace TP4.EF.Logic
                 suppliersUpdate.CompanyName = supplier.CompanyName;
                 suppliersUpdate.Phone = supplier.Phone;
                 context.SaveChanges();
-
             }
             catch (Exception e)
             {
