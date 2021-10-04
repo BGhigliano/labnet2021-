@@ -161,6 +161,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ShippersView.cs" />
+    <Compile Include="Models\StarWarsCharacterView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -254,6 +255,10 @@
     <ProjectReference Include="..\TP4.EF.Logic\TP4.EF.Logic.csproj">
       <Project>{14864FDF-C2D2-4BF5-B45E-5E6FCA3EEF44}</Project>
       <Name>TP4.EF.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TP4.EF.MVC\TP4.EF.MVC.csproj">
+      <Project>{FD122F8B-6242-4FD1-9E7F-77136B90F4D6}</Project>
+      <Name>TP4.EF.MVC</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
